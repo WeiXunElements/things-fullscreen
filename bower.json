@@ -1,18 +1,18 @@
 {
   "name": "things-fullscreen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
-  "description": "An element providing Date Picker, Time Picker and Date Range Pickger (things-date-from-to).",
+  "description": "화면을 풀스크린 모드를 지원하게하는 behavior",
   "keywords": [
     "web-component",
     "polymer",
     "seed"
   ],
-  "main": "things-fullscreen.html",
+  "main": "things-fullscreen-behavior.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/ThingsElements/seed-element/",
+  "homepage": "https://github.com/ThingsElements/things-fullscreen/",
   "ignore": [
     "/.*",
     "/test/"
