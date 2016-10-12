@@ -83,6 +83,10 @@ Things.FullscreenBehavior = {
   toggleFullscreen: function() {
     if (this.fullscreenAvailable) {
       if (!this.fullscreen) {
+        // fire things-toggle-play-pages
+        var fullscreenEvent = new CustomEvent('things-toggle-play-pages', { detail : 'on' });
+        document.dispatchEvent(fullscreenEvent);
+
         // We are not in full screen mode, let's request it
         // But first let's grad a hold on the target
         var targetElement = typeof this.target !== "string" ? this.target :
@@ -98,6 +102,10 @@ Things.FullscreenBehavior = {
             targetElement.msRequestFullscreen();
         }
       } else {
+        // fire things-toggle-play-pages
+        var fullscreenEvent = new CustomEvent('things-toggle-play-pages', { detail : 'off' });
+        document.dispatchEvent(fullscreenEvent);
+
         // We are in full screen mode, let's exit
         if (document.exitFullscreen) {
             document.exitFullscreen();
