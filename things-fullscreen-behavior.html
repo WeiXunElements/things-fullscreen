@@ -24,7 +24,7 @@ The element also provides 2 read-only flags as attribute:
 */
 Things.FullscreenBehavior = {
   
-  properties: {
+properties: {
     /**
      * The element to display full screen, or the selector to use to automatically
      * find  the element to be displayed full screen.
@@ -84,7 +84,7 @@ Things.FullscreenBehavior = {
     if (this.fullscreenAvailable) {
       if (!this.fullscreen) {
         // fire things-toggle-play-pages
-        var fullscreenEvent = new CustomEvent('things-toggle-play-pages', { detail : 'on' });
+        var fullscreenEvent = new CustomEvent('things-toggle-play-pages_' + this.currentScreen.routing, { detail: 'on'});
         document.dispatchEvent(fullscreenEvent);
 
         // We are not in full screen mode, let's request it
@@ -103,7 +103,7 @@ Things.FullscreenBehavior = {
         }
       } else {
         // fire things-toggle-play-pages
-        var fullscreenEvent = new CustomEvent('things-toggle-play-pages', { detail : 'off' });
+        var fullscreenEvent = new CustomEvent('things-toggle-play-pages_' + this.currentScreen.routing, { detail: 'off'});
         document.dispatchEvent(fullscreenEvent);
 
         // We are in full screen mode, let's exit
