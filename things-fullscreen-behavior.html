@@ -84,8 +84,10 @@ properties: {
     if (this.fullscreenAvailable) {
       if (!this.fullscreen) {
         // fire things-toggle-play-pages
-        var fullscreenEvent = new CustomEvent('things-toggle-play-pages_' + this.currentScreen.routing, { detail: 'on'});
-        document.dispatchEvent(fullscreenEvent);
+        var fullscreenPageEvent = new CustomEvent('things-toggle-play-page_' + this.currentScreen.routing, { detail: 'on'});
+        var fullscreenPlayEvent = new CustomEvent('things-toggle-play-pages_' + this.currentScreen.routing, { detail: 'on'});
+        document.dispatchEvent(fullscreenPageEvent);
+        document.dispatchEvent(fullscreenPlayEvent);
 
         // We are not in full screen mode, let's request it
         // But first let's grad a hold on the target
@@ -103,8 +105,10 @@ properties: {
         }
       } else {
         // fire things-toggle-play-pages
-        var fullscreenEvent = new CustomEvent('things-toggle-play-pages_' + this.currentScreen.routing, { detail: 'off'});
-        document.dispatchEvent(fullscreenEvent);
+        var fullscreenPageEvent = new CustomEvent('things-toggle-play-page_' + this.currentScreen.routing, { detail: 'off'});
+        var fullscreenPlayEvent = new CustomEvent('things-toggle-play-pages_' + this.currentScreen.routing, { detail: 'off'});
+        document.dispatchEvent(fullscreenPageEvent);
+        document.dispatchEvent(fullscreenPlayEvent);
 
         // We are in full screen mode, let's exit
         if (document.exitFullscreen) {
