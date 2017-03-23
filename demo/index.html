@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>things-input-field Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../things-fullscreen-behavior.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
+    <link rel="import" href="../../iron-form/iron-form.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+</head>
+
+<body unresolved>
+  <demo-snippet class="centered-demo">
+      <template>
+        <dom-module id="fullscreen-btn">
+          <template>
+            <style>
+              :host {
+                display: block;
+              }
+            </style>
+            <button id="fullscreen-btn" on-tap="toggleFullscreen"></button>
+          </template>
+          <script>
+            Polymer({
+              is: 'fullscreen-btn',
+              behaviors:[
+                Things.FullscreenBehavior
+              ]
+            });
+          </script>
+        </dom-module>
+      </template>
+  </demo-snippet>
+
+</body>
+
+</html>

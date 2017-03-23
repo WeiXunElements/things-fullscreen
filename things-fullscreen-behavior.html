@@ -18,12 +18,12 @@ The element also provides 2 read-only flags as attribute:
    HTML5's full screen API (Safari on iOS does not).
 - `fullscreen`: set to `true` if an element is currently displayed in
    full screen mode.
-@homepage https://github.com/vguillou/fullscreen-api
 @demo demo/index.html
+
 @polymerBehavior
 */
 Things.FullscreenBehavior = {
-  
+
 properties: {
     /**
      * The element to display full screen, or the selector to use to automatically
@@ -32,7 +32,7 @@ properties: {
      * Note that changing the target while in full screen mode will not
      * have any effect, as toggling between display modes MUST be
      * triggered by user interaction.
-     * 
+     *
      * If `target` is not set, the whole page (more specifically
      * `document.documentElement`) will be displayed full screen.
      *
@@ -156,8 +156,8 @@ properties: {
     this._setFullscreen(this._isFullscreenToggled());
   },
   _isFullscreenAvailable: function() {
-    return (document.fullscreenEnabled || 
-        document.webkitFullscreenEnabled || 
+    return (document.fullscreenEnabled ||
+        document.webkitFullscreenEnabled ||
         document.mozFullScreenEnabled ||
         document.msFullscreenEnabled) ? true : false;
   },
