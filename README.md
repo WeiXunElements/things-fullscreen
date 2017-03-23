@@ -16,7 +16,8 @@ The element also provides 2 read-only flags as attribute:
 - `fullscreen`: set to `true` if an element is currently displayed in
    full screen mode.
 
-******
+##
+
 ko-kr
 
 HTML5 full screen API를 래핑하는 간단한 Polymer 'behavior'
