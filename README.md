@@ -2,9 +2,6 @@
 
 ## 화면 풀스크린 모드를 지원하게하는 behavior
 
-## things-fullscreen-behavior
-
-
 en-us
 
 A simple Polymer `behavior` that wraps the HTML5 full screen API.
