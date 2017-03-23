@@ -18,7 +18,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="../things-fullscreen-behavior.html">
     <link rel="import" href="../../paper-button/paper-button.html">
-    <link rel="import" href="../../iron-form/iron-form.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 </head>
@@ -26,6 +25,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <body unresolved>
   <demo-snippet class="centered-demo">
       <template>
+        <fullscreen-btn></fullscreen-btn>
         <dom-module id="fullscreen-btn">
           <template>
             <style>
@@ -33,7 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: block;
               }
             </style>
-            <button id="fullscreen-btn" on-tap="toggleFullscreen"></button>
+            <button id="fullscreen-btn" on-tap="toggleFullscreen">fullscreen-btn</button>
           </template>
           <script>
             Polymer({
@@ -46,7 +46,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </dom-module>
       </template>
   </demo-snippet>
-
 </body>
 
 </html>
