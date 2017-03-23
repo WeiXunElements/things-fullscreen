@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 # things-fullscreen-behavior
 
 ## 화면 풀스크린 모드를 지원하게하는 behavior
-=======
+
 ## things-fullscreen-behavior
->>>>>>> origin/master
+
 
 en-us
 
