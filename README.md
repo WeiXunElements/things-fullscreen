@@ -1,4 +1,6 @@
-things-fullscreen-behavior
+# things-fullscreen-behavior
+
+## 화면 풀스크린 모드를 지원하게하는 behavior
 
 en-us
 
@@ -29,6 +31,29 @@ HTML5 full screen API를 래핑하는 간단한 Polymer 'behavior'
 - 'fullscreenAvailable' : HTML5의 전체 화면 API를 브라우저가 지원하는 경우 'true'로 설정(iOS Safari에서는 안됨)
 - 'fullscreen' : 현재 full screen mode로 되어있다면 'true'로 설정.
 
+Example :
+
+```html
+<fullscreen-btn></fullscreen-btn>
+<dom-module id="fullscreen-btn">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <button id="fullscreen-btn" on-tap="toggleFullscreen">fullscreen-btn</button>
+  </template>
+  <script>
+    Polymer({
+      is: 'fullscreen-btn',
+      behaviors:[
+        Things.FullscreenBehavior
+      ]
+    });
+  </script>
+</dom-module>
+```
 
 ## Dependencies
 
