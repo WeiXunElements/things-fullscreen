@@ -59,8 +59,4 @@ element를 독립적으로 처리하려면 [Polyserve](https://github.com/Polyme
 
     polymer serve
 
-element를 실행한 경우, `things-date-picker`가 디렉토리 이름으로 포함되어 있는 `http://localhost:8080/components/things-date-picker/`를 통해 이를 미리 확인할 수 있다. 
-
-
-## Example 1. Things fullscreen
-`<things-fullscreen>` Things fullscreen
+element를 실행한 경우, `things-fullscreen`이 디렉토리 이름으로 포함되어 있는 `http://localhost:8080/components/things-fullscreen/`을 통해 이를 미리 확인할 수 있다. 
