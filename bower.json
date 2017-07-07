@@ -1,6 +1,6 @@
 {
   "name": "things-fullscreen",
-  "version": "v2.0.0",
+  "version": "2.2.0",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -11,15 +11,14 @@
     "seed"
   ],
   "main": "things-fullscreen-behavior.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/ThingsElements/things-fullscreen/",
+  "license": "http://license.hatiolab.com/EULA",
+  "homepage": "http://elements.hatiolab.com/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0"
-
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
