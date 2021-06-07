@@ -1,265 +1,269 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html" />
 
 <script>
+  window.Things = window.Things || {};
 
-window.Things = window.Things || {};
-
-/**
-* # Things-Fullscreen
-*
-* ## 화면 풀스크린 모드를 지원하게하는 behavior
-*
-* en-us
-*
-* A simple Polymer `behavior` that wraps the HTML5 full screen API.
-* It lets you define which element to display in full screen mode
-* (via the `target` attribute) and toggle normal/full screen
-* mode by calling the `toggleFullscreen()` method.
-* Note that this method MUST be triggered directly by user interaction
-* (typically in a native `onclick` or Polymer's `on-click` handler).
-* If no `target` is set, the whole page (more specifically
-* `document.documentElement`) will be displayed full screen.
-* The element also provides 2 read-only flags as attribute:
-* - `fullscreenAvailable`: set to `true` if the browser supports
-*    HTML5's full screen API (Safari on iOS does not).
-* - `fullscreen`: set to `true` if an element is currently displayed in
-*    full screen mode.
-*
-******
-* ko-kr
-*
-* HTML5 full screen API를 래핑하는 간단한 Polymer 'behavior'
-* 전체 화면 모드로 표시 할 element를 정의 할 수 있고(target속성으로 통함),
-* 'toggleFullscreen()'method를 호출함으로써 normal/full화면모드로 전환할 수 있다.
-* 이 방법은 반드시 사용자 상호 작용에 의해 직접 트리거 되어야 한다.
-* (일반적으로 원래의 'onclick' 또는 Polymer의 'on-click'핸들러)
-* 만일 'targer'이 set되어 있지 않으면, 전체 page가 fullscreen으로 display될 것이다.
-* 이 element는 또한 속성으로부터 read-only flag들이 제공된다.
-* - 'fullscreenAvailable' : HTML5의 전체 화면 API를 브라우저가 지원하는 경우 'true'로 설정(iOS Safari에서는 안됨)
-* - 'fullscreen' : 현재 full screen mode로 되어있다면 'true'로 설정.
-*
-* Example :
-*```html
-* <fullscreen-btn></fullscreen-btn>
-* <dom-module id="fullscreen-btn">
-*   <template>
-*     <style>
-*       :host {
-*         display: block;
-*       }
-*     </style>
-*     <button id="fullscreen-btn" on-tap="toggleFullscreen">fullscreen-btn</button>
-*   </template>
-*   <script>
-*     Polymer({
-*       is: 'fullscreen-btn',
-*       behaviors:[
-*         Things.FullscreenBehavior
-*       ]
-*     });
-*```
-*
-* @demo demo/index.html
-*
-* @polymerBehavior
-*
-**/
-Things.FullscreenBehavior = {
-
-properties: {
-    /**
-     * en-us
-     *
-     * The element to display full screen, or the selector to use to automatically
-     * find  the element to be displayed full screen.
-     *
-     * Note that changing the target while in full screen mode will not
-     * have any effect, as toggling between display modes MUST be
-     * triggered by user interaction.
-     *
-     * If `target` is not set, the whole page (more specifically
-     * `document.documentElement`) will be displayed full screen.
-     *
-     *****
-     *
-     * ko-kr
-     *
-     * full screen으로 표시할 element 또는 full screen으로 표시 할 요소를 자동으로 찾기 위해 사용할 선택기
-     *
-     * full screen mode에 대상을 변경해도, 사용자 상호 작용에 의해 표시 모드를 전환해야 하기 때문에 아무런 영향을 미치지 않는다.
-     *
-     * 만약 'target'을 설정하지 않았으면, 전체 page는 full screen으로 표시될 것이다.
-     *
-     ******
-     * @attribute target
-     * @type {Object|String}
-     */
-    target: {
-      type: Object,
-      value: undefined,
-      notify: true
-    },
-    /**
-     * en-us
-     *
-     * Read-only flag (boolean) indicating if an element is being
-     * displayed full screen.
-     *
-     ******
-     * ko-kr
-     *
-     * element가 존재하는지 아닌지를 나타내는 Read-only flag(boolean)입니다.
-     * full screen으로 표시됨.
-     *
-     ******
-     * @attribute fullscreen
-     * @type {boolean}
-     */
-    fullscreen:  {
-      type: Boolean,
-      value: false,
-      notify: true,
-      readOnly: true,
-      reflectToAttribute: true
-    },
-    /**
-     * en-us
-     *
-     * Read-only flag (boolean) indicating if full screen mode is available
-     * on the browser (Safari on iOS does not support it).
-     *
-     ******
-     *
-     * ko-kr
-     *
-     * full screen mode인지 아닌지 표시하는 Read-only flag는 브라우저에서 이용할 수 있다.(iOS의 Safari는 지원하지않음.)
-     ******
-     * @attribute fullscreenAvailable
-     * @type {boolean}
-     */
-    fullscreenAvailable:  {
-      type: Boolean,
-      value: false,
-      notify: true,
-      readOnly: true,
-      reflectToAttribute: true
-    }
-  },
   /**
+   * # Things-Fullscreen
+   *
+   * ## 화면 풀스크린 모드를 지원하게하는 behavior
+   *
    * en-us
    *
-   * Toggle between full screen and normal display mode.
-   * MUST be triggered directly by user interaction
-   * (typically in a native 'onclick' or Polymer's 'on-click' handler).
+   * A simple Polymer `behavior` that wraps the HTML5 full screen API.
+   * It lets you define which element to display in full screen mode
+   * (via the `target` attribute) and toggle normal/full screen
+   * mode by calling the `toggleFullscreen()` method.
+   * Note that this method MUST be triggered directly by user interaction
+   * (typically in a native `onclick` or Polymer's `on-click` handler).
+   * If no `target` is set, the whole page (more specifically
+   * `document.documentElement`) will be displayed full screen.
+   * The element also provides 2 read-only flags as attribute:
+   * - `fullscreenAvailable`: set to `true` if the browser supports
+   *    HTML5's full screen API (Safari on iOS does not).
+   * - `fullscreen`: set to `true` if an element is currently displayed in
+   *    full screen mode.
    *
    ******
-   *
    * ko-kr
    *
-   * full screen과 normal display mode 사이의 토글은 사용자 상호작용에 의해 트리거 되어진다.
+   * HTML5 full screen API를 래핑하는 간단한 Polymer 'behavior'
+   * 전체 화면 모드로 표시 할 element를 정의 할 수 있고(target속성으로 통함),
+   * 'toggleFullscreen()'method를 호출함으로써 normal/full화면모드로 전환할 수 있다.
+   * 이 방법은 반드시 사용자 상호 작용에 의해 직접 트리거 되어야 한다.
+   * (일반적으로 원래의 'onclick' 또는 Polymer의 'on-click'핸들러)
+   * 만일 'targer'이 set되어 있지 않으면, 전체 page가 fullscreen으로 display될 것이다.
+   * 이 element는 또한 속성으로부터 read-only flag들이 제공된다.
+   * - 'fullscreenAvailable' : HTML5의 전체 화면 API를 브라우저가 지원하는 경우 'true'로 설정(iOS Safari에서는 안됨)
+   * - 'fullscreen' : 현재 full screen mode로 되어있다면 'true'로 설정.
    *
-   ******
-   * @method toggleFullscreen
-   */
-  toggleFullscreen: function() {
-    if (this.fullscreenAvailable) {
-      if (!this.fullscreen) {
-        // fire things-toggle-play-pages
-        if(this.currentScreen && this.currentScreen.routing) {
-          var fullscreenPageEvent = new CustomEvent('things-toggle-play-page_' + this.currentScreen.routing, { detail: 'on'});
-          document.dispatchEvent(fullscreenPageEvent);
-        }
+   * Example :
+   *```html
+   * <fullscreen-btn></fullscreen-btn>
+   * <dom-module id="fullscreen-btn">
+   *   <template>
+   *     <style>
+   *       :host {
+   *         display: block;
+   *       }
+   *     </style>
+   *     <button id="fullscreen-btn" on-tap="toggleFullscreen">fullscreen-btn</button>
+   *   </template>
+   *   <script>
+   *     Polymer({
+   *       is: 'fullscreen-btn',
+   *       behaviors:[
+   *         Things.FullscreenBehavior
+   *       ]
+   *     });
+   *```
+   *
+   * @demo demo/index.html
+   *
+   * @polymerBehavior
+   *
+   **/
+  Things.FullscreenBehavior = {
+    properties: {
+      /**
+       * en-us
+       *
+       * The element to display full screen, or the selector to use to automatically
+       * find  the element to be displayed full screen.
+       *
+       * Note that changing the target while in full screen mode will not
+       * have any effect, as toggling between display modes MUST be
+       * triggered by user interaction.
+       *
+       * If `target` is not set, the whole page (more specifically
+       * `document.documentElement`) will be displayed full screen.
+       *
+       *****
+       *
+       * ko-kr
+       *
+       * full screen으로 표시할 element 또는 full screen으로 표시 할 요소를 자동으로 찾기 위해 사용할 선택기
+       *
+       * full screen mode에 대상을 변경해도, 사용자 상호 작용에 의해 표시 모드를 전환해야 하기 때문에 아무런 영향을 미치지 않는다.
+       *
+       * 만약 'target'을 설정하지 않았으면, 전체 page는 full screen으로 표시될 것이다.
+       *
+       ******
+       * @attribute target
+       * @type {Object|String}
+       */
+      target: {
+        type: Object,
+        value: undefined,
+        notify: true,
+      },
+      /**
+       * en-us
+       *
+       * Read-only flag (boolean) indicating if an element is being
+       * displayed full screen.
+       *
+       ******
+       * ko-kr
+       *
+       * element가 존재하는지 아닌지를 나타내는 Read-only flag(boolean)입니다.
+       * full screen으로 표시됨.
+       *
+       ******
+       * @attribute fullscreen
+       * @type {boolean}
+       */
+      fullscreen: {
+        type: Boolean,
+        value: false,
+        notify: true,
+        readOnly: true,
+        reflectToAttribute: true,
+      },
+      /**
+       * en-us
+       *
+       * Read-only flag (boolean) indicating if full screen mode is available
+       * on the browser (Safari on iOS does not support it).
+       *
+       ******
+       *
+       * ko-kr
+       *
+       * full screen mode인지 아닌지 표시하는 Read-only flag는 브라우저에서 이용할 수 있다.(iOS의 Safari는 지원하지않음.)
+       ******
+       * @attribute fullscreenAvailable
+       * @type {boolean}
+       */
+      fullscreenAvailable: {
+        type: Boolean,
+        value: false,
+        notify: true,
+        readOnly: true,
+        reflectToAttribute: true,
+      },
+    },
+    /**
+     * en-us
+     *
+     * Toggle between full screen and normal display mode.
+     * MUST be triggered directly by user interaction
+     * (typically in a native 'onclick' or Polymer's 'on-click' handler).
+     *
+     ******
+     *
+     * ko-kr
+     *
+     * full screen과 normal display mode 사이의 토글은 사용자 상호작용에 의해 트리거 되어진다.
+     *
+     ******
+     * @method toggleFullscreen
+     */
+    toggleFullscreen: function () {
+      if (this.fullscreenAvailable) {
+        if (!this.fullscreen) {
+          // fire things-toggle-play-pages
+          if (this.currentScreen && this.currentScreen.routing) {
+            var fullscreenPageEvent = new CustomEvent('things-toggle-play-page_' + this.currentScreen.routing, {
+              detail: 'on',
+            });
+            document.dispatchEvent(fullscreenPageEvent);
+          }
 
-        // We are not in full screen mode, let's request it
-        // But first let's grad a hold on the target
-        var targetElement = typeof this.target !== "string" ? this.target :
-          document.querySelector(this.target);
-        targetElement = targetElement || document.documentElement;
-        if (targetElement.requestFullscreen) {
+          // We are not in full screen mode, let's request it
+          // But first let's grad a hold on the target
+          var targetElement = typeof this.target !== 'string' ? this.target : document.querySelector(this.target);
+          targetElement = targetElement || document.documentElement;
+          if (targetElement.requestFullscreen) {
             targetElement.requestFullscreen();
-        } else if (targetElement.webkitRequestFullscreen) {
+          } else if (targetElement.webkitRequestFullscreen) {
             targetElement.webkitRequestFullscreen();
-        } else if (targetElement.mozRequestFullScreen) {
+          } else if (targetElement.mozRequestFullScreen) {
             targetElement.mozRequestFullScreen();
-        } else if (targetElement.msRequestFullscreen) {
+          } else if (targetElement.msRequestFullscreen) {
             targetElement.msRequestFullscreen();
-        }
-      } else {
-        // fire things-toggle-play-pages
-        if (this.currentScreen && this.currentScreen.routing) {
-          var fullscreenPageEvent = new CustomEvent('things-toggle-play-page_' + this.currentScreen.routing, { detail: 'off'});
-          document.dispatchEvent(fullscreenPageEvent);
-        }
+          }
+        } else {
+          // fire things-toggle-play-pages
+          if (this.currentScreen && this.currentScreen.routing) {
+            var fullscreenPageEvent = new CustomEvent('things-toggle-play-page_' + this.currentScreen.routing, {
+              detail: 'off',
+            });
+            document.dispatchEvent(fullscreenPageEvent);
+          }
 
-        // We are in full screen mode, let's exit
-        if (document.exitFullscreen) {
+          // We are in full screen mode, let's exit
+          if (document.exitFullscreen) {
             document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
+          } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
+          } else if (document.mozCancelFullScreen) {
             document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
+          } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
+          }
         }
       }
-    }
-  },
-  /**
-   * en-us
-   *
-   * Exit full screen mode (if toggled)
-   *
-   ******
-   *
-   * ko-kr
-   *
-   * full screen mode 종료 (토글 할 시)
-   ******
-   * @method exitFullscreen
-   */
-  exitFullscreen: function() {
-    if (this.fullscreen) {
-      this.toggleFullscreen();
-    }
-  },
-  ready: function() {
-    this._setFullscreenAvailable(this._isFullscreenAvailable());
-    if (this.fullscreenAvailable) {
-      this._boundFullscreenChangedHandler = this._fullscreenChangedHandler.bind(this);
-      document.addEventListener('fullscreenchange', this._boundFullscreenChangedHandler);
-      document.addEventListener('webkitfullscreenchange', this._boundFullscreenChangedHandler);
-      document.addEventListener('mozfullscreenchange', this._boundFullscreenChangedHandler);
-      document.addEventListener('MSFullscreenChange', this._boundFullscreenChangedHandler);
-    }
-    this._fullscreenChangedHandler();
-  },
-  detached: function() {
-    if (this._boundFullscreenChangedHandler) {
-      document.removeEventListener('fullscreenchange', this._boundFullscreenChangedHandler);
-      document.removeEventListener('webkitfullscreenchange', this._boundFullscreenChangedHandler);
-      document.removeEventListener('mozfullscreenchange', this._boundFullscreenChangedHandler);
-      document.removeEventListener('MSFullscreenChange', this._boundFullscreenChangedHandler);
-    }
-  },
-  _fullscreenChangedHandler: function() {
-    this._setFullscreen(this._isFullscreenToggled());
-  },
-  _isFullscreenAvailable: function() {
-    return (document.fullscreenEnabled ||
+    },
+    /**
+     * en-us
+     *
+     * Exit full screen mode (if toggled)
+     *
+     ******
+     *
+     * ko-kr
+     *
+     * full screen mode 종료 (토글 할 시)
+     ******
+     * @method exitFullscreen
+     */
+    exitFullscreen: function () {
+      if (this.fullscreen) {
+        this.toggleFullscreen();
+      }
+    },
+    ready: function () {
+      this._setFullscreenAvailable(this._isFullscreenAvailable());
+      if (this.fullscreenAvailable) {
+        this._boundFullscreenChangedHandler = this._fullscreenChangedHandler.bind(this);
+        document.addEventListener('fullscreenchange', this._boundFullscreenChangedHandler);
+        document.addEventListener('webkitfullscreenchange', this._boundFullscreenChangedHandler);
+        document.addEventListener('mozfullscreenchange', this._boundFullscreenChangedHandler);
+        document.addEventListener('MSFullscreenChange', this._boundFullscreenChangedHandler);
+      }
+      this._fullscreenChangedHandler();
+    },
+    detached: function () {
+      if (this._boundFullscreenChangedHandler) {
+        document.removeEventListener('fullscreenchange', this._boundFullscreenChangedHandler);
+        document.removeEventListener('webkitfullscreenchange', this._boundFullscreenChangedHandler);
+        document.removeEventListener('mozfullscreenchange', this._boundFullscreenChangedHandler);
+        document.removeEventListener('MSFullscreenChange', this._boundFullscreenChangedHandler);
+      }
+    },
+    _fullscreenChangedHandler: function () {
+      this._setFullscreen(this._isFullscreenToggled());
+    },
+    _isFullscreenAvailable: function () {
+      return document.fullscreenEnabled ||
         document.webkitFullscreenEnabled ||
         document.mozFullScreenEnabled ||
-        document.msFullscreenEnabled) ? true : false;
-  },
-  _isFullscreenToggled: function() {
-    return (document.fullscreenElement ||
+        document.msFullscreenEnabled
+        ? true
+        : false;
+    },
+    _isFullscreenToggled: function () {
+      return document.fullscreenElement ||
         document.webkitFullscreenElement ||
         document.mozFullScreenElement ||
-        document.msFullscreenElement) ? true : false;
-  },
-};
-
+        document.msFullscreenElement
+        ? true
+        : false;
+    },
+  };
 </script>

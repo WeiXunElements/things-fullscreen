@@ -1,24 +1,22 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
     <title>things-input-field Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="../things-fullscreen-behavior.html">
-    <link rel="import" href="../../paper-button/paper-button.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-</head>
+    <link rel="import" href="../things-fullscreen-behavior.html" />
+    <link rel="import" href="../../paper-button/paper-button.html" />
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+  </head>
 
-<body unresolved>
-  <demo-snippet class="centered-demo">
+  <body unresolved>
+    <demo-snippet class="centered-demo">
       <template>
         <fullscreen-btn></fullscreen-btn>
         <dom-module id="fullscreen-btn">
@@ -33,14 +31,11 @@ Copyright © HatioLab Inc. All rights reserved.
           <script>
             Polymer({
               is: 'fullscreen-btn',
-              behaviors:[
-                Things.FullscreenBehavior
-              ]
+              behaviors: [Things.FullscreenBehavior],
             });
           </script>
         </dom-module>
       </template>
-  </demo-snippet>
-</body>
-
+    </demo-snippet>
+  </body>
 </html>

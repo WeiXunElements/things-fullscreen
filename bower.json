@@ -1,8 +1,8 @@
 {
   "name": "things-fullscreen",
-  "version": "v2.2.0",
+  "version": "v2.2.1",
   "authors": [
-    "Hatio Lab. <heartyoh@hatiolab.com>"
+    "Shenzhen Weixun"
   ],
   "description": "화면 풀스크린 모드를 지원하게하는 behavior",
   "keywords": [
@@ -11,8 +11,6 @@
     "seed"
   ],
   "main": "things-fullscreen-behavior.html",
-  "license": "http://license.hatiolab.com/EULA",
-  "homepage": "http://elements.hatiolab.com/",
   "ignore": [
     "/.*",
     "/test/"
